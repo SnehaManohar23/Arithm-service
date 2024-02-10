@@ -29,7 +29,7 @@
             // Check if the input is valid
             if (!isNaN(num1) && !isNaN(num2)) {
                 // Make an AJAX request to the arithmetic service
-                fetch(`http://localhost:3001/add?num1=${num1}&num2=${num2}`)
+                fetch(`https://snemanoh-arithmetic-service1.onrender.com/add?num1=${num1}&num2=${num2}`)
                     .then(response => response.json()) // Parse response as JSON
                     .then(data => {
                         // Extract the result value from the response
