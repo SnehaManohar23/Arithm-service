@@ -3,13 +3,14 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const port = 3001;
-const path = require("path");
+// const path = require("path");
 
 app.use(cors({}));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
+
 
 // Route to add two numbers
 app.get("/add", (req, res) => {
