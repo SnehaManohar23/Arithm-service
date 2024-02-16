@@ -1,7 +1,7 @@
 // server.js
 const express = require("express");
 const cors = require("cors");
-const { add, subtract, multiply, divide } = require("./arithmetica");
+const { add, subtract, multiply, divide } = require("./src/arithmetica");
 const app = express();
 const port = 3001;
 // const path = require('path');
