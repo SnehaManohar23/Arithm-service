@@ -20,6 +20,34 @@ app.get("/add/:n/:m", (req, res) => {
   
 });
 
+app.get("/subtract/:n/:m", (req, res) => {
+  let n = Number(req.params.n);
+  let m = Number(req.params.m);
+  let result = subtract(n, m);
+  res.json({ result });
+});
+
+app.get("/multiply/:n/:m", (req, res) => {
+  let n = Number(req.params.n);
+  let m = Number(req.params.m);
+  let result = multiply(n, m);
+  res.json({ result });
+});
+
+app.get("/divide/:n/:m", (req, res) => {
+  let n = Number(req.params.n);
+  let m = Number(req.params.m);
+
+  // Check for division by zero
+  if (m === 0) {
+    res.status(400).json({ error: "Cannot divide by zero." });
+    return;
+  }
+
+  let result = divide(n, m);
+  res.json({ result });
+});
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
