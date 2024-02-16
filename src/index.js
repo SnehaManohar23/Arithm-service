@@ -3,13 +3,12 @@ const cors = require("cors");
 const { add, subtract, multiply, divide } = require("./arithmetica");
 const app = express();
 const port = 3001;
-// const path = require('path');
 
 app.use(cors());
 const path = require('path');
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../index.html"));
+  res.sendFile(path.join(__dirname, "../start.html"));
 });
 
 // New route for adding two numbers
@@ -17,8 +16,8 @@ app.get("/add/:n/:m", (req, res) => {
   // Extracting two numbers from query parameters
   let n=Number(req.params.n);
   let m=Number(req.params.m);
-  let sum=add(n,m);
-    res.json(sum);
+  let result=add(n,m);
+  res.json({result});
   
 });
 

@@ -19,7 +19,7 @@
 
         <input type="number" id="num2" name="num2" required>
 
-        <button onclick="calculate()">Calculate </button>
+        <button onclick="calculate()">Calculate</button>
 
         <p id="result">Result: </p>
     </section>
@@ -34,7 +34,7 @@
             // Check if the input is valid
             if (!isNaN(num1) && !isNaN(num2)) {
                 // Make an AJAX request to the arithmetic service
-                fetch(`https://arithmetic-service-snemanoh2.onrender.com/${operation}?num1=${num1}&num2=${num2}`)
+                fetch(`http://localhost:3001/${operation}/${num1}/${num2}`)
                     .then(response => response.json()) // Parse response as JSON
                     .then(data => {
                         // Extract the result value from the response
