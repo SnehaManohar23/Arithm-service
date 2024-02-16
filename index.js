@@ -1,30 +1,53 @@
 // server.js
 const express = require("express");
 const cors = require("cors");
+const { add, subtract, multiply, divide } = require("./arithmetica");
 const app = express();
 const port = 3001;
-// const path = require("path");
+// const path = require('path');
 
-app.use(cors({}));
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
+// New route for adding two numbers
+app.get("/add/:n/:m", (req, res) => {
+  // Extracting two numbers from query parameters
+  let n=Number(req.params.n);
+  let m=Number(req.params.m);
+  let sum=add(n,m);
+    res.json(sum);
+  
+});
 
-// Route to add two numbers
-app.get("/add", (req, res) => {
-  const num1 = parseFloat(req.query.num1);
-  const num2 = parseFloat(req.query.num2);
+app.get("/subtract/:n/:m", (req, res) => {
+  let n = Number(req.params.n);
+  let m = Number(req.params.m);
+  let result = subtract(n, m);
+  res.json({ result });
+});
 
-  if (!isNaN(num1) && !isNaN(num2)) {
-    const sum = num1 + num2;
-    res.json({ result: sum });
-  } else {
-    res
-      .status(400)
-      .json({ error: "Invalid input. Please provide valid numbers." });
+app.get("/multiply/:n/:m", (req, res) => {
+  let n = Number(req.params.n);
+  let m = Number(req.params.m);
+  let result = multiply(n, m);
+  res.json({ result });
+});
+
+app.get("/divide/:n/:m", (req, res) => {
+  let n = Number(req.params.n);
+  let m = Number(req.params.m);
+
+  // Check for division by zero
+  if (m === 0) {
+    res.status(400).json({ error: "Cannot divide by zero." });
+    return;
   }
+
+  let result = divide(n, m);
+  res.json({ result });
 });
 
 app.listen(port, () => {

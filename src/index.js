@@ -3,9 +3,13 @@ const cors = require("cors");
 const { add, subtract, multiply, divide } = require("./arithmetica");
 const app = express();
 const port = 3001;
-const path = require('path');
+// const path = require('path');
 
 app.use(cors());
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
 
 // New route for adding two numbers
 app.get("/add/:n/:m", (req, res) => {
