@@ -6,9 +6,10 @@ const port = 3001;
 // const path = require('path');
 
 app.use(cors());
+const path = require('path');
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(__dirname, "../index.html"));
 });
 
 // New route for adding two numbers

@@ -1,11 +1,11 @@
 FROM node:20.11.0-alpine
 
-WORKDIR /arithmetic-service
+WORKDIR /Arithm-service
 # COPY index.html /arithmetic-service/public
 # COPY index.js /arithmetic-service/src/index
-COPY package*.json/ /arithmetic-service
+COPY package*.json/ /Arithm-service
 RUN npm ci --omit=dev
-COPY ./ /arithmetic-service/src
+COPY ./ /Arithm-service/src
 
 CMD ["npm","start"]
 
