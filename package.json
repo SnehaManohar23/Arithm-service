@@ -2,7 +2,7 @@
   "name": "arithmetic-service",
   "version": "1.0.0",
   "description": "Practicum",
-  "main": "index.js",
+  "main": " index.js ",
   "scripts": {
     "test": "jest",
     "start": "node ./src/index.js"
