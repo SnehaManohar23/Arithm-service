@@ -8,7 +8,7 @@ app.use(cors());
 const path = require('path');
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../start.html"));
+  res.sendFile(path.join(__dirname, "../index.html"));
 });
 
 // New route for adding two numbers
