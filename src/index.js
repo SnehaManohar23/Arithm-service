@@ -6,10 +6,6 @@ const port = 3001;
 
 app.use(cors());
 
-// app.get("/", (req, res) => {
-//   res.send("Arithmetic service - Hello world!");
-// });
-
 // New route for adding two numbers
 app.get("/add/:n/:m", (req, res) => {
   // Extracting two numbers from query parameters
