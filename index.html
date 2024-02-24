@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    <style>
+        .column {
+           float: left;
+           width: 50%;
+           padding: 10px;
+           box-sizing: border-box;
+          
+        }
+        .row::after {
+           content: "";
+           clear: both;
+           display: table;
+        }
+     </style>
 </head>
 <body>
     <label for="num1">Number 1:</label>
@@ -23,9 +37,19 @@
     <button onclick="calculate()">Calculate</button>
 
     <div id="result"></div>
+    <div class="column">
+        <section>
+            <h2>Prime check</h2>                
+            <label>Number to test:</label>
+            <input id="numberToTest"/>
+            <button onclick="isPrime()">Check</button>
+            <label id="primeCheckResult"></label>  
+        </section>           
+    </div>       
+ </div>
 
     <script>
-        function calculate() {
+        async function calculate() {
             // Get the values of the input fields
             var num1 = parseFloat(document.getElementById('num1').value);
             var num2 = parseFloat(document.getElementById('num2').value);
@@ -53,6 +77,13 @@
                 document.getElementById('result').innerHTML = 'Invalid input. Please enter valid numbers.';
             }
         }
+        async function isPrime() {
+    const numberToTest = document.getElementById("numberToTest").value; // Ensure you're getting the value
+    const response = await fetch(`http://localhost:3001/isprime/${numberToTest}`); // Corrected fetch URL
+    const data = await response.json(); // Parsing JSON response
+    document.getElementById("primeCheckResult").innerText = data.result ? "Prime" : "Not Prime";
+}
+
     </script>
 </body>
 </html>
