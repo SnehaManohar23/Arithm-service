@@ -47,6 +47,38 @@
         </section>           
     </div>       
  </div>
+ <div class="search-bar">
+    <input
+      type="text"
+      id="cipherSearch"
+      placeholder="Enter cipher..."
+      style="width: 200px"
+    />
+    <!-- Adjusted search button -->
+    <button onclick="searchCipher()">Search</button>
+  </div>
+
+  <script>
+    // Function to handle cipher search
+    async function searchCipher() {
+      const cipherInput = document.getElementById("cipherSearch").value;
+
+      // Specify the backend link for cipher search
+      const response = await fetch(
+        `https://your-backend-url/search?cipher=${cipherInput}`
+      );
+      const cipherData = await response.json();
+
+      // Handle the response data
+      if (cipherData) {
+        // Update the DOM with the cipher details
+        // For example, display cipher details in a modal or update a specific section in the HTML
+      } else {
+        // Handle case when cipher is not found
+        alert("Cipher not found!");
+      }
+    }
+  </script>
 
     <script>
         async function calculate() {
@@ -78,11 +110,15 @@
             }
         }
         async function isPrime() {
-    const numberToTest = document.getElementById("numberToTest").value; // Ensure you're getting the value
-    const response = await fetch(`https://arithm-service-github-io.onrender.com/isprime/${numberToTest}`); // Corrected fetch URL
-    const data = await response.json(); // Parsing JSON response
-    document.getElementById("primeCheckResult").innerText = data.result ? "Prime" : "Not Prime";
-}
+        const numberToTest = document.getElementById("numberToTest");
+        let n = parseInt(numberToTest.value); // Convert input value to integer
+        const response = await fetch(
+          `https://primes-service-latest-ye9d.onrender.com/primes/${n}`
+        );
+        const result = await response.json();
+        document.getElementById("primeCheckResult").innerText =
+          "Prime: " + result;
+      }
 
     </script>
 </body>
