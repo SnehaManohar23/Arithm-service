@@ -2,10 +2,17 @@ const express = require("express");
 const cors = require("cors");
 const { add, subtract, multiply, divide } = require("./src/arithmetica");
 const app = express();
-const port = 3001;
+
 
 app.use(cors());
 const path = require('path');
+
+if(!process.env.PORT){
+  throw new Error('Please specify the port number for the HTTP server with the environment variable PORT');
+}
+
+const port=process.env.PORT;
+
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
